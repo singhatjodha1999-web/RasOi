@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RasOi – The Art of Indian Cooking</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner">
+      <span class="loader-icon">🍲</span>
+      <p>Stirring the magic…</p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-left">
+      <span class="logo-icon">🪔</span>
+      <h1 class="logo">RasOi</h1>
+      <span class="logo-tagline">The Art of Indian Cooking</span>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn active" data-filter="all">All</button>
+      <button class="nav-btn veg" data-filter="veg">🌿 Veg</button>
+      <button class="nav-btn nonveg" data-filter="nonveg">🍗 Non-Veg</button>
+      <button class="nav-btn jain" data-filter="jain">☮️ Jain</button>
+    </nav>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="nav-btn active" data-filter="all">All Recipes</button>
+    <button class="nav-btn veg" data-filter="veg">🌿 Veg</button>
+    <button class="nav-btn nonveg" data-filter="nonveg">🍗 Non-Veg</button>
+    <button class="nav-btn jain" data-filter="jain">☮️ Jain</button>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-pre">Welcome to</p>
+      <h2 class="hero-title">Every <em>flavour</em><br/>has a story.</h2>
+      <p class="hero-sub">From sizzling streets to royal kitchens — explore hundreds of authentic Indian recipes.</p>
+      <div class="hero-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search recipes, ingredients…" />
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="art-circle c1"></div>
+      <div class="art-circle c2"></div>
+      <div class="art-circle c3"></div>
+      <div class="floating-emojis">
+        <span style="--d:0s;--x:10%;--y:20%">🫚</span>
+        <span style="--d:.5s;--x:80%;--y:10%">🌶️</span>
+        <span style="--d:1s;--x:60%;--y:70%">🧄</span>
+        <span style="--d:1.5s;--x:20%;--y:80%">🍛</span>
+        <span style="--d:2s;--x:90%;--y:55%">🧅</span>
+        <span style="--d:2.5s;--x:40%;--y:15%">🫛</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY PILLS -->
+  <section class="category-bar">
+    <div class="cat-scroll">
+      <button class="cat-pill active" data-cat="all">🍽️ All</button>
+      <button class="cat-pill" data-cat="breakfast">☀️ Breakfast</button>
+      <button class="cat-pill" data-cat="main">🍱 Main Course</button>
+      <button class="cat-pill" data-cat="snacks">🥙 Snacks</button>
+      <button class="cat-pill" data-cat="sweet">🍮 Sweets</button>
+      <button class="cat-pill" data-cat="rice">🍚 Rice & Biryani</button>
+      <button class="cat-pill" data-cat="bread">🫓 Breads</button>
+      <button class="cat-pill" data-cat="soup">🍜 Soups & Dal</button>
+      <button class="cat-pill" data-cat="drinks">🥤 Drinks</button>
+    </div>
+  </section>
+
+  <!-- RESULTS COUNT -->
+  <div class="results-bar">
+    <p id="resultsCount">Showing all recipes</p>
+    <div class="sort-wrap">
+      <label>Sort:</label>
+      <select id="sortSelect">
+        <option value="default">Default</option>
+        <option value="time-asc">Time ↑</option>
+        <option value="time-desc">Time ↓</option>
+        <option value="name">A–Z</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- RECIPE GRID -->
+  <main class="recipe-grid" id="recipeGrid"></main>
+
+  <!-- NO RESULTS -->
+  <div class="no-results hidden" id="noResults">
+    <span>😕</span>
+    <p>No recipes found. Try a different search or filter.</p>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-header">
+        <span class="modal-emoji" id="modalEmoji"></span>
+        <div>
+          <span class="modal-badge" id="modalBadge"></span>
+          <h2 id="modalTitle"></h2>
+          <div class="modal-meta" id="modalMeta"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>🥘 Ingredients</h3>
+          <ul id="modalIngredients"></ul>
+        </div>
+        <div class="modal-section">
+          <h3>👨‍🍳 Steps</h3>
+          <ol id="modalSteps"></ol>
+        </div>
+        <div class="modal-section tips-section" id="modalTipsWrap">
+          <h3>💡 Tips</h3>
+          <p id="modalTips"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="logo">🪔 RasOi</span>
+      <p>Made with ❤️ &amp; masala · Every recipe tells a story</p>
+      <p class="footer-copy">© 2025 RasOi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="recipes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
